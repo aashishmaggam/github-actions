@@ -4,6 +4,8 @@ env:
   APP_ENV: "dev"
 jobs:
   job-1:
+    env:
+      APP_ENV: "test"
     runs-on: ubuntu-22.04
     steps:
       - name: 1st
