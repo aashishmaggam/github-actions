@@ -1,14 +1,14 @@
 name: git
-on: push
-env:
-  APP_ENV: "dev"
+on: 
+ workflow_dispatch:
+   inputs:
+     environment:
+      description: "Select environment"
+      required: true
+      default: dev
 jobs:
   job-1:
-    env:
-      APP_ENV: "test"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - name: 1st
-        env:
-          APP_ENV: "prod"
-        run: echo "1st $APP_ENV"
+      -  name: deploy the application
+        run: echo " deploying app into ${{ inputs.environment}}
