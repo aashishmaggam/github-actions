@@ -1,0 +1,10 @@
+name: git
+on: push
+env:
+  APP_ENV: "dev"
+jobs:
+  job-1:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: 1st
+        run: echo "1st $APP_ENV"
