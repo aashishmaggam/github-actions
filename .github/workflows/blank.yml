@@ -1,14 +1,12 @@
-name: git
-on: 
- workflow_dispatch:
-   inputs:
-     environment:
-      description: "Select environment"
-      required: true
-      default: dev
+name: test-inputs
+on: push
 jobs:
-  job-1:
+  test-context:
     runs-on: ubuntu-latest
     steps:
-      - name: deploy the application
-        run: echo " deploying app into ${{ inputs.environment}}
+      - name: using context variables
+        run: |
+          echo "this workflow triggered by ${{ github.actor}}
+          echo "the repo name is ${{  github.repository}}
+      - name: print all variables in github
+        run: echo "${{ toJson(github) }}"
