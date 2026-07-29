@@ -1,19 +1,16 @@
 name: output
-on: push
+on: 
+  push:
+    branches:
+      - main
+      - test
 jobs:
-  build:
-    outputs:
-      version: ${{ steps.step1.outputs.version }}
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - name: step1
-        id: step1
-        run:  echo "version=0.1" >> $GITHUB_OUTPUT
-      - name: step2
-        run:  echo "the version ${{ steps.step1.outputs.version }}"
-  delopy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: second
-        run: echo "depoy ${{needs.build.outputs.version}}"
+      - name: sth
+        if: github.ref=='ref/heads'
+        run: echo "sucess"
+      - name: ft
+        run: echo "not sucess"
+    
